@@ -1,0 +1,2 @@
+class ForeignExchange < ApplicationRecord
+end

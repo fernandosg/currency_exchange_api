@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "last_updated_at":"2024-01-02T23:59:59Z"
+  },
+  "data": {
+    "ADA": {
+      "code":"ADA","value":1.6448831318},
+    "AED": {
+      "code":"AED","value":3.6710704835
+    },
+    "AFN": {
+      "code":"AFN","value":70.0343120125
+    }
+  }
+}

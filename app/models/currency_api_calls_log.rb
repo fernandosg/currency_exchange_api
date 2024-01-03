@@ -1,0 +1,2 @@
+class CurrencyApiCallsLog < ApplicationRecord
+end
