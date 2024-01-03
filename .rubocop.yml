@@ -1,0 +1,14 @@
+Metrics/BlockLength:
+  AllowedMethods: ['describe', 'context']
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineAssignmentLayout:
+  EnforcedStyle: same_line
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Lint/ShadowedException:
+  Enabled: false

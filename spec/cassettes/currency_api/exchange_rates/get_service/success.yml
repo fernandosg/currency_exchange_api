@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.currencyapi.com/v3/latest?apikey=cur_live_PNfciB6gzJaSODjelEMTVeefK9XE4AXT630EdgwA
+    uri: https://api.currencyapi.com/v3/latest?apikey=API_KEY_MOCK
     body:
       encoding: US-ASCII
       string: ''

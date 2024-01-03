@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
 module CurrencyApi
+  # Builder class in charge to interpretated
+  # the data from the CurrencyAPI server
+  # to the expected attributes that could be handle inside the application
   class ForeignExchangesBuilder
     attr_reader :instance
 

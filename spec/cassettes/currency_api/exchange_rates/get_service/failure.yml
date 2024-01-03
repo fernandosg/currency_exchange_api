@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.currencyapi.com/v3/latest?apikey=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 04 Jan 2024 03:13:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Www-Authenticate:
+      - Key realm="kong"
+      X-Request-Id:
+      - 70a82a32-233b-442e-a61f-77f1fabc9f8f
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=rwXLX7bZbjvdnsWBlLlp%2B9ax8MkeOhHVddm5rtf1xDlmAAtp7roar8yS%2FrdN2wjZrlxQYBjRgPMlVZiLoxAfXwoK9R%2BnJPoAbaLAiWnw3njCzVwID57mrD%2FLizV5IK8laFK4lFuMqXUw8YDNhWzJrqeH"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 84004e0aac1d2ee1-LAX
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "message":"No API key found in request"
+        }
+  recorded_at: Thu, 04 Jan 2024 03:13:18 GMT
+recorded_with: VCR 6.2.0

@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 module CurrencyApi
   module ExchangeRates
+    # Service class in charge to fetch the information from CurrencyAPI
+    # and insert in the local db
     class BackupProcess
       include ServiceBehavior
 
-      attr_reader :args
+      attr_reader :args, :last_updated_at
 
       def initialize(args = {})
         @args = args
@@ -13,12 +17,16 @@ module CurrencyApi
         records = fetch_records
         backup_records(records.values)
       rescue StandardError => e
+        errors.add(:base, e.message)
+        nil
       end
 
       private
 
       def fetch_records
-        currency_api_service.perform['data']
+        response = currency_api_service.perform
+        @last_updated_at = response['meta']['last_updated_at']
+        response['data']
       end
 
       def currency_api_service
@@ -27,16 +35,17 @@ module CurrencyApi
 
       def backup_records(records)
         return if records.empty?
+
         list_exchanges = []
 
         records.each do |record|
           current_datetime = DateTime.current
-          list_exchanges << ForeignExchangesBuilder.
-            build(record.merge!('last_updated_at' => record['last_updated_at'])).
-            merge!(created_at: current_datetime, updated_at: current_datetime)
+          list_exchanges << ForeignExchangesBuilder
+            .build(record.merge!('last_updated_at' => last_updated_at))
+            .merge!(created_at: current_datetime, updated_at: current_datetime)
         end
 
-        ForeignExchange.upsert_all(list_exchanges) unless list_exchanges.empty?
+        ForeignExchange.upsert_all(list_exchanges, unique_by: :code) unless list_exchanges.empty?
       end
     end
   end
